@@ -18,6 +18,9 @@ Route::get('/', function () {
 //Route::get('/empleados','EmpleadoController@index');
 //Route::get('/empleados/create', 'EmpleadoController@create');
 
+Route::get('/inicio', function () {
+    return view('/layouts/home');
+});
 
 Auth::routes();
 
