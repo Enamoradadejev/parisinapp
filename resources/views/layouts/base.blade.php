@@ -7,11 +7,11 @@
   <meta name="description" content="">
   <meta name="author" content="Dashboard">
   <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
-  <title>Dashio - Bootstrap Admin Template</title>
+  <title>ParsisinApp</title>
 
-  <!-- Favicons -->
+  <!-- Favicons 
   <link href="{{ asset('assets/img/favicon.png')}}" rel="icon">
-  <link href="{{ asset('assets/img/apple-touch-icon.png')}}" rel="apple-touch-icon">
+  <link href="{{ asset('assets/img/apple-touch-icon.png')}}" rel="apple-touch-icon">-->
 
   <!-- Bootstrap core CSS -->
   <link href="{{ asset('assets/lib/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
@@ -48,7 +48,7 @@
       <div class="nav notify-row" id="top_menu">
         <!--  notification start -->
         <ul class="nav top-menu">
-          <!-- settings start -->
+          <!-- settings start 
           <li class="dropdown">
             <a data-toggle="dropdown" class="dropdown-toggle" href="index.html#">
               <i class="fa fa-tasks"></i>
@@ -115,9 +115,9 @@
                 <a href="#">See All Tasks</a>
               </li>
             </ul>
-          </li>
+          </li>-->
           <!-- settings end -->
-          <!-- inbox dropdown start-->
+          <!-- inbox dropdown start
           <li id="header_inbox_bar" class="dropdown">
             <a data-toggle="dropdown" class="dropdown-toggle" href="index.html#">
               <i class="fa fa-envelope-o"></i>
@@ -180,9 +180,9 @@
                 <a href="index.html#">See all messages</a>
               </li>
             </ul>
-          </li>
+          </li>-->
           <!-- inbox dropdown end -->
-          <!-- notification dropdown start-->
+          <!-- notification dropdown start
           <li id="header_notification_bar" class="dropdown">
             <a data-toggle="dropdown" class="dropdown-toggle" href="index.html#">
               <i class="fa fa-bell-o"></i>
@@ -225,7 +225,7 @@
                 <a href="index.html#">See all notifications</a>
               </li>
             </ul>
-          </li>
+          </li>-->
           <!-- notification dropdown end -->
         </ul>
         <!--  notification end -->
@@ -253,6 +253,22 @@
               <span>Inicio</span>
               </a>
           </li>
+
+          <li>
+            <a href="{{ route('empleados.index') }}">
+              <i class="fa fa-user-circle"></i>
+              <span>Empleados</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="{{ route('ventas.index') }}">
+              <i class="fa fa-shopping-cart"></i>
+              <span>Ventas</span>
+            </a>
+          </li>
+
+          <!--
           <li class="sub-menu">
             <a href="javascript:;">
               <i class="fa fa-desktop"></i>
@@ -354,7 +370,7 @@
               <i class="fa fa-map-marker"></i>
               <span>Google Maps </span>
               </a>
-          </li>
+          </li>-->
         </ul>
         <!-- sidebar menu end-->
       </div>

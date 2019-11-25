@@ -1,4 +1,4 @@
-@extends('layouts.base')
+@extends('layouts.app')
 
 @section('content')
 <div class="container">
@@ -30,7 +30,7 @@
                             <td>{{$empleado->Turno}}</td>
                             <td>
                               <a href="{{ route('empleados.edit', $empleado->id) }}" class="btn btn-sm btn-warning">Editar</a>
-                              <form action="" method="POST">
+                              <form action="{{ route('empleados.destroy', $empleado->id) }}" method="POST">
                                 @method('DELETE')
                                 @csrf
                                 <button type="submit" class="btn btn-sm btn-danger">Eliminar</button>
@@ -39,6 +39,14 @@
                           </tr>
                       </tbody>
                     </table>
+
+                    
+                    <ul>
+                      @foreach($empleado->ventas as $venta)
+                        <li>{{ $venta->fecha }}</li>
+                      @endforeach
+                    </ul>
+
                 </div>
             </div>
         </div>

@@ -14,13 +14,8 @@ class EmpleadoController extends Controller
      */
     public function index()
     {
-
         $empleados = Empleado::all();
         return view('empleados.index', compact('empleados'));
-
-        /*
-        $datos['empleados'] = Empleado::paginate(5);
-        return view('empleados.index',$datos);*/
     }
 
     /**
@@ -39,20 +34,22 @@ class EmpleadoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request) 
     {
+
+        //DARLE SEGURIDAD PARA CUANDO NO INGRESEN NADA
+        $request->validate([
+            'Nombre' => 'required|min:1|max:30',
+            'ApellidoP' => 'required|min:1|max:50',
+            'ApellidoM' => 'required|min:1|max:50',
+            'Telefono' => 'required|min:10|max:13',
+            'Correo' => 'required|min:13|max:255',
+            'Puesto' => 'required|min:3|max:255',
+            'Turno' => 'required|min:7|max:10'
+        ]);
 
         Empleado::create($request->all());
         return redirect()->route('empleados.index');
-
-        /*$datosEmpleado = request()->all();
-        $datosEmpleado = request()->except('_token');
-
-        //INSERTAR EN LA BASE DE DATOS
-        Empleado::insert($datosEmpleado);
-        
-        //return response()->json($datosEmpleado);
-        return redirect()->route('empleados.index');*/
     }
 
     /**
@@ -72,16 +69,9 @@ class EmpleadoController extends Controller
      * @param  \App\Empleado  $empleado
      * @return \Illuminate\Http\Response
      */
-    public function edit(Empleado $empleado)
-    {
+    public function edit(Empleado $empleado) {
 
         return view('empleados.form', compact('empleado'));
-
-        /*
-        //DEVULVE TODA LA INFO QUE CORRESPONDE A ESE ID
-        $empleado = Empleado::findOrFail($id);
-        //ENVIA LA INFORMACION DEL $empleado
-        return view('empleados.edit',compact('empleado'));*/
     }
 
     /**
@@ -93,6 +83,15 @@ class EmpleadoController extends Controller
      */
     public function update(Request $request, Empleado $empleado)
     {
+        $request->validate([
+            'Nombre' => 'required|min:1|max:30',
+            'ApellidoP' => 'required|min:1|max:50',
+            'ApellidoM' => 'required|min:1|max:50',
+            'Telefono' => 'required|min:10|max:13',
+            'Correo' => 'required|min:13|max:255',
+            'Puesto' => 'required|min:3|max:255',
+            'Turno' => 'required|min:7|max:10'
+        ]);
 
         $empleado->Nombre = $request->Nombre;
         $empleado->ApellidoP = $request->ApellidoP;
@@ -101,19 +100,9 @@ class EmpleadoController extends Controller
         $empleado->Telefono = $request->Telefono;
         $empleado->Puesto = $request->Puesto;
         $empleado->Turno = $request->Turno;
-        $empleado->Foto = $request->Foto;
 
         $empleado->save();
         return redirect()->route('empleados.show', $empleado->id);
-
-        /*
-        $datosEmpleado = request()->except(['_token','_method']);
-        EmpleadoDB::where('id','=',$id)->update($datosEmpleado);
-
-        //DEVULVE TODA LA INFO QUE CORRESPONDE A ESE ID
-        $empleado = Empleado::findOrFail($id);
-        //ENVIA LA INFORMACION DEL $empleado
-        return view('empleados.edit',compact('empleado'));*/
 
     }
 
@@ -123,7 +112,7 @@ class EmpleadoController extends Controller
      * @param  \App\Empleado  $empleado
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Empleado $empleado)
+    public function destroy(Empleado $empleado) 
     {
         $empleado->delete();
         return redirect()->route('empleados.index');

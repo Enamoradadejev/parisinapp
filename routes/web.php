@@ -11,6 +11,8 @@
 |
 */
 
+use App\Http\Controllers\ArchivoController;
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -24,7 +26,16 @@ Route::get('/inicio', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Auth::routes(['verify' => true]);
+
+Route::get('/home', 'HomeController@index')->name('home')->middleware('verified');
 
 //CREA LA DE TODOS LOS METODOS AUTOMATICAMENTE
 Route::resource('empleados', 'EmpleadoController');
+Route::resource('ventas', 'VentaController');
+Route::resource('mesas', 'MesaController');
+Route::resource('telas', 'TelaController');
+
+Route::get('cargar-archivo','ArchivoController@archivoForm');
+Route::post('cargar-archivo','ArchivoController@archivoPost')->name('archivo.upload');
+

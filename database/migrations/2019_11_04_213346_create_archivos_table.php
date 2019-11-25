@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateEmpleadosTable extends Migration
+class CreateArchivosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,13 @@ class CreateEmpleadosTable extends Migration
      */
     public function up()
     {
-        Schema::create('empleados', function (Blueprint $table) {
+        Schema::create('archivos', function (Blueprint $table) {
             $table->bigIncrements('id');
-
-            $table->string('Nombre');
-            $table->string('ApellidoP');
-            $table->string('ApellidoM');
-            $table->string('Telefono');
-            $table->string('Correo');
-            $table->string('Puesto');
-            $table->string('Turno');
-
+            $table->string('original');
+            $table->string('hash');
+            $table->string('mime');
+            $table->string('size');
+            $table->string('ruta'); //SEGUN DIRECTORIOS DONDE SE GUARDEN
             $table->timestamps();
         });
     }
@@ -35,6 +31,6 @@ class CreateEmpleadosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('empleados');
+        Schema::dropIfExists('archivos');
     }
 }
