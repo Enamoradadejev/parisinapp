@@ -35,7 +35,13 @@ Route::resource('empleados', 'EmpleadoController');
 Route::resource('ventas', 'VentaController');
 Route::resource('mesas', 'MesaController');
 Route::resource('telas', 'TelaController');
+Route::resource('tareas', 'TareaController');
 
 Route::get('cargar-archivo','ArchivoController@archivoForm');
 Route::post('cargar-archivo','ArchivoController@archivoPost')->name('archivo.upload');
+
+//Manejo de Archivos
+Route::post('archivo/cargar', 'ArchivoController@upload')->name('archivo.upload');
+Route::get('archivo/{archivo}/descargar', 'ArchivoController@download')->name('archivo.download');
+Route::post('archivo/{archivo}/borrar', 'ArchivoController@delete')->name('archivo.delete');
 

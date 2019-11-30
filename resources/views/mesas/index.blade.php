@@ -7,7 +7,8 @@
             <div class="card">
 
                 <div class="card-body">
-                  <a href="{{ route('mesas.create') }}" class="btn btn-default btn-sm">Nueva mesa</a>
+                  <a href="{{ route('mesas.create') }}" class="btn btn-success btn-sm">Nueva mesa</a>
+                  <br><br>
                     <table class="table">
                       <thead class="thead-dark">
                         <tr>
@@ -15,6 +16,8 @@
                             <th>Numero de mesa</th>
                             <th>Area</th>
                             <th>Enfoque</th>
+                            <th>Acciones</th>
+                        </tr>
                       </thead>
 
                       <tbody>
@@ -24,9 +27,8 @@
                             <td>{{ $mesa->numero_mesa }}</td>
                             <td>{{ $mesa->area }}</td>
                             <td>{{ $mesa->enfoque }}</td>
-                            <td>{{ $mesa->empleado->Nombre}}</td>
                             <td>
-                            <a href="{{ route('mesas.show', $mesa->id) }}" class="btn btn-sm btn-info">Ver Detalle</a>
+                            <a href="{{ route('mesas.show', $mesa->id) }}" class="btn btn-info btn-sm btn-block">Ver Detalle</a>
                             </td>
                         </tr>
                         @endforeach

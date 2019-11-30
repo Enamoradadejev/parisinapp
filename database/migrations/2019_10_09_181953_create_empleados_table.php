@@ -15,7 +15,7 @@ class CreateEmpleadosTable extends Migration
     {
         Schema::create('empleados', function (Blueprint $table) {
             $table->bigIncrements('id');
-
+            $table->unsignedBigInteger('mesa_id');
             $table->string('Nombre');
             $table->string('ApellidoP');
             $table->string('ApellidoM');
@@ -23,8 +23,10 @@ class CreateEmpleadosTable extends Migration
             $table->string('Correo');
             $table->string('Puesto');
             $table->string('Turno');
-
             $table->timestamps();
+
+            $table->foreign('mesa_id')->references('id')->on('mesas');
+            //->onDelete('cascade');
         });
     }
 

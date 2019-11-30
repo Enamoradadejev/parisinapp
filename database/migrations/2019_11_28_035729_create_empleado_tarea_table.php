@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateArchivosTable extends Migration
+class CreateEmpleadoTareaTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,15 @@ class CreateArchivosTable extends Migration
      */
     public function up()
     {
-        Schema::create('archivos', function (Blueprint $table) {
+        Schema::create('empleado_tarea', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('original');
-            $table->string('hash');
-            $table->string('mime');
-            $table->string('size');
-            $table->string('ruta'); //SEGUN DIRECTORIOS DONDE SE GUARDEN
+            $table->unsignedBigInteger('empleado_id');
+            $table->unsignedBigInteger('tarea_id');
             $table->timestamps();
+
+            $table->foreign('tarea_id')->references('id')->on('tareas');
+            $table->foreign('empleado_id')->references('id')->on('empleados');
+
         });
     }
 
@@ -31,6 +32,6 @@ class CreateArchivosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('archivos');
+        Schema::dropIfExists('empleado_tarea');
     }
 }

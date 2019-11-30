@@ -15,16 +15,12 @@ class CreateMesasTable extends Migration
     {
         Schema::create('mesas', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('empleado_id'); //RELACION A 1:M
+
             $table->integer('numero_mesa');
             $table->string('area');
             $table->string('enfoque');
+            
             $table->timestamps();
-
-            $table->foreign('empleado_id')
-            ->references('id')
-            ->on('empleados');
-            //->onDelete('cascade');
         });
     }
 

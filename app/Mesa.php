@@ -6,13 +6,18 @@ use Illuminate\Database\Eloquent\Model;
 
 class Mesa extends Model
 {
-    protected $fillable = ['numero_mesa','area','enfoque','empleado_id'];
+    protected $table = 'mesas';
+    protected $fillable = ['numero_mesa','area','enfoque'];
     
-    public function empleado()
+    public function empleados()
+    {
+        return $this->hasMany('App\Empleado');
+    }
+    
+    /*public function empleado()
     {
         return $this->belongsTo(Empleado::class);
-    }
-
+    }*/
     /*
     public function telas(){
         return $this->belongsToMany(Tela::class);

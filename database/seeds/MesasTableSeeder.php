@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class VentasTableSeeder extends Seeder
+class MesasTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,6 +11,6 @@ class VentasTableSeeder extends Seeder
      */
     public function run()
     {
-        
+        factory(App\Mesa::class, 10)->create();
     }
 }

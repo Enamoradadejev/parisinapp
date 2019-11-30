@@ -83,10 +83,6 @@
                 <div class="title m-b-md">
                     ParisinApp
                 </div>
-
-                <div class="links">
-                    <a href="{{ url('/empleados') }}">Empleados</a>
-                </div>
             </div>
         </div>
     </body>

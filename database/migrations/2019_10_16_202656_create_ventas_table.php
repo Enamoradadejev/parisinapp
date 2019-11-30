@@ -15,14 +15,15 @@ class CreateVentasTable extends Migration
     {
         Schema::create('ventas', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('empleado_id');
+            //$table->unsignedBigInteger('empleado_id');
             $table->date('fecha');
             $table->timestamps();
 
+            /*
             $table->foreign('empleado_id')
             ->references('id')
             ->on('empleados');
-            //->onDelete('cascade');
+            //->onDelete('cascade');*/
         });
     }
 

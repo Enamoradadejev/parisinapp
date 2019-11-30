@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Empleado;
+use App\Mesa;
 use Illuminate\Http\Request;
 
 class EmpleadoController extends Controller
@@ -25,7 +26,8 @@ class EmpleadoController extends Controller
      */
     public function create()
     {
-        return view('empleados.form');
+        $mesas = Mesa::all();
+        return view('empleados.form',compact('mesas'));
     }
 
     /**
@@ -45,7 +47,8 @@ class EmpleadoController extends Controller
             'Telefono' => 'required|min:10|max:13',
             'Correo' => 'required|min:13|max:255',
             'Puesto' => 'required|min:3|max:255',
-            'Turno' => 'required|min:7|max:10'
+            'Turno' => 'required|min:7|max:10',
+            'mesa_id' => 'required|min:1'
         ]);
 
         Empleado::create($request->all());
@@ -70,8 +73,8 @@ class EmpleadoController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit(Empleado $empleado) {
-
-        return view('empleados.form', compact('empleado'));
+        $mesas = Mesa::all();
+        return view('empleados.form', compact('empleado','mesas'));
     }
 
     /**
@@ -83,6 +86,7 @@ class EmpleadoController extends Controller
      */
     public function update(Request $request, Empleado $empleado)
     {
+        
         $request->validate([
             'Nombre' => 'required|min:1|max:30',
             'ApellidoP' => 'required|min:1|max:50',
@@ -103,7 +107,7 @@ class EmpleadoController extends Controller
 
         $empleado->save();
         return redirect()->route('empleados.show', $empleado->id);
-
+        
     }
 
     /**
@@ -114,7 +118,9 @@ class EmpleadoController extends Controller
      */
     public function destroy(Empleado $empleado) 
     {
+        
         $empleado->delete();
         return redirect()->route('empleados.index');
+        
     }
 }

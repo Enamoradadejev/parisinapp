@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Empleado;
 use App\Mesa;
 use Illuminate\Http\Request;
 
@@ -26,8 +25,7 @@ class MesaController extends Controller
      */
     public function create()
     {
-        $empleados = Empleado::all();
-        return view('mesas.form',compact('emplados'));
+        return view('mesas.form');
     }
 
     /**
@@ -41,8 +39,7 @@ class MesaController extends Controller
         $request->validate([
             'numero_mesa' => 'required|min:1',
             'area' => 'required|min:6|max:8',
-            'enfoque' => 'required|min:5|max:9',
-            'empleado_id' => 'required|min:1'
+            'enfoque' => 'required|min:5|max:9'
         ]);
 
         //GUARDAR
@@ -69,7 +66,7 @@ class MesaController extends Controller
      */
     public function edit(Mesa $mesa)
     {
-        //return view('mesas.form',compact('mesa'));
+        return view('mesas.form',compact('mesa'));
     }
 
     /**
@@ -81,21 +78,19 @@ class MesaController extends Controller
      */
     public function update(Request $request, Mesa $mesa)
     {
-        /*
+        
         $request->validate([
             'numero_mesa' => 'required|min:1',
             'area' => 'required|min:6|max:8',
-            'enfoque' => 'required|min:5|max:9',
-            'empleado_id' => 'required|min:1'
+            'enfoque' => 'required|min:5|max:9'
         ]);
 
         $mesa->numero_mesa = $request->numero_mesa;
         $mesa->area = $request->area;
         $mesa->enfoque = $request->enfoque;
-        $mesa->empleado_id = $request->empleado_id;
 
         $mesa->save();
-        return redirect()->route('mesas.show',$mesa->id);*/
+        return redirect()->route('mesas.show',$mesa->id);
     }
 
     /**
@@ -106,8 +101,7 @@ class MesaController extends Controller
      */
     public function destroy(Mesa $mesa)
     {
-        /*
         $mesa->delete();
-        return redirect()->route('mesas.index');*/
+        return redirect()->route('mesas.index');
     }
 }

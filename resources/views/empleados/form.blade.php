@@ -26,33 +26,21 @@
 
                 <div class="col-md-12">
                     <div class="form-group">
-
                         {!! Form::label('Nombre', 'Nombre(s):') !!}
                         {!! Form::text('Nombre', null, ['class' => 'form-control'])  !!}
-
-                        <!--<label for="Nombre">Nombre</label>
-                        <input type="text" name="Nombre" value="{{ $empleado->Nombre ?? '' }}" class="form-control" id="Nombre">-->
                     </div>
                 </div>
 
                 <div class="col-md-6">
                     <div class="form-group">
-
                         {!! Form::label('ApellidoP', 'Apellido Paterno') !!}
                         {!! Form::text('ApellidoP', null, ['class' => 'form-control'])  !!}
-
-                        <!--<label for="ApellidoP">Apellido Paterno</label>
-                        <input type="text" name="ApellidoP" value="{{ $empleado->ApellidoP ?? '' }}" class="form-control" id="ApellidoP">-->
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
-
                         {!! Form::label('ApellidoM', 'Apellido Materno') !!}
                         {!! Form::text('ApellidoM', null, ['class' => 'form-control'])  !!}
-
-                        <!--<label for="ApellidoM">Apellido Materno</label>
-                        <input type="text" name="ApellidoM" value="{{ $empleado->ApellidoM ?? '' }}" class="form-control" id="ApellidoM">-->
                     </div>
                 </div>
 
@@ -95,11 +83,22 @@
                 </div>
 
                 <div class="col-md-12">
+                    <select name="mesa_id" class="form-control">
+                        @foreach($mesas as $mesa)
+                            <option value="{{ $mesa->id }}">{{ $mesa->numero_mesa }}</option>
+                        @endforeach
+                    </select>
+                </div>
+
+                <br>
+                <div class="col-md-12">
                     <button type="submit" class="btn btn-danger btn-block">Enviar</button>
                 </div>
 
                 </form>
+                
         </div>
     </div>
 </div>
+
 @endsection

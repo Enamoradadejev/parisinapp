@@ -6,19 +6,20 @@ use Illuminate\Database\Eloquent\Model;
 
 class Empleado extends Model
 {
-    protected $table = 'empleados';
-    public $timestamps = false;
-    protected $fillable = ['Nombre', 'ApellidoP', 'ApellidoM','Telefono','Correo','Puesto','Turno'];
+    protected $fillable = ['Nombre', 'ApellidoP', 'ApellidoM','Telefono','Correo','Puesto','Turno','mesa_id'];
 
-    
-    public function ventas()
+    public function mesa()
     {
-        return $this->hasMany('App\Venta');
+        return $this->belongsTo(Mesa::class);
     }
 
-    /*
-    public function mesas()
+    public function tareas()
     {
-        return $this->hasMany('App\Mesa');
-    }   */
+        return $this->belongsToMany(Tarea::class);
+    }
+
+    public function archivos()
+    {
+        return $this->morphMany(Archivo::class, 'modelo');
+    }
 }
